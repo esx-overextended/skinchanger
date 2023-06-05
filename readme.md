@@ -1,34 +1,82 @@
-<h1 align='center'>ESX Legacy</a></h1>
-<p align='center'><a href='https://discord.esx-framework.org/'>Discord</a> - <a href='https://esx-framework.org/'>Website</a> - <a href='https://documentation.esx-framework.org/legacy/installation'>Documentation</a></b></h5>
+<h1 align='center'>[ESX] SkinChanger</a></h1><p align='center'><b><a href='https://discord.esx-framework.org/'>Discord</a> - <a href='https://esx-framework.org/'>Website</a> - <a href='https://docs.esx-framework.org/legacy/installation'>Documentation</a></b></h5>
 
-<p align='center'>Want more resources? You can browse the <a href="https://github.com/esx-community/">ESX Community Github</a> or <a href="https://forum.cfx.re/tag/esx">Cfx.re Releases board</a> for more!
-<p align='center'><b>ESX is the leading framework, trusted By thousands of commmunitys for the heighest quality roleplay servers on FiveM</b></p>
+skinchanger is a resource used to both Set and Get Players clothing, accessories and Model - It supports the freemode peds `mp_m_freemode_01` and `mp_f_freemode_01` as well as all Ped Features.
 
-<hr>
+## Usage
 
-### 💗 Supporters
+```lua
+local isMale = true
 
-Interested in helping us? [Take a look at our patreon](https://www.patreon.com/esx "Take a look at our patreon")
+local skin = {
+ sex          = 1,
+ face         = 0,
+ skin         = 0,
+ beard_1      = 0,
+ beard_2      = 0,
+ beard_3      = 0,
+ beard_4      = 0,
+ hair_1       = 0,
+ hair_2       = 0,
+ hair_color_1 = 0,
+ hair_color_2 = 0,
+ tshirt_1     = 0,
+ tshirt_2     = 0,
+ torso_1      = 0,
+ torso_2      = 0,
+ decals_1     = 0,
+ decals_2     = 0,
+ arms         = 0,
+ pants_1      = 0,
+ pants_2      = 0,
+ shoes_1      = 0,
+ shoes_2      = 0,
+ mask_1       = 0,
+ mask_2       = 0,
+ bproof_1     = 0,
+ bproof_2     = 0,
+ chain_1      = 0,
+ chain_2      = 0,
+ helmet_1     = 0,
+ helmet_2     = 0,
+ glasses_1    = 0,
+ glasses_2    = 0,
+}
 
-| We would like to sincerely thank the following donors who helped fund the development of ESX.  |
-| ------------ |
-| Mohamad Buhamad - Michael Hein - RoadToSix - Montree Narathong  |
-| Saydoon - Muhannad alyamani - iSentrie - Wecity - Samuel Nicol |
-| Kyle McShea - Artin - Mathias Christoffersen - Jaylan Yilmaz - Callum |
-| CONGRESS KW - Michael Hein - Smery sitbon - daZepelin - CMF Community |
-------
+-- Load freemode model
+TriggerEvent('skinchanger:loadDefaultModel', isMale)
 
-### 📌 License
+-- Load skin
+TriggerEvent('skinchanger:loadSkin', skin)
 
-ESX-legacy - ESX framework for FiveM
+-- you can also load only some components :
+TriggerEvent('skinchanger:loadSkin', {
+ sex          = 0,
+ beard_1      = 0,
+ beard_2      = 0,
+})
 
-    Copyright (C) 2015-2023 ESX-Framework
+-- Get list of components and maxVals
+TriggerEvent('skinchanger:getData', function(components, maxVals)
+ print('Components => ' .. json.encode(components))
+ print('MaxVals => ' .. json.encode(maxVals))
+end)
 
-    This program Is free software: you can redistribute it And/Or modify it under the terms Of the GNU General Public License As published by the Free Software Foundation, either version 3 Of the License, Or (at your option) any later version.
+-- Get current skin
+TriggerEvent('skinchanger:getSkin', function(skin)
+ print(json.encode(skin))
+end)
+```
 
-    This program Is distributed In the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty Of MERCHANTABILITY Or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License For more details.
+# Legal
 
-    You should have received a copy Of the GNU General Public License along with this program. If Not, see <http://www.gnu.org/licenses/>.
----
+## License
 
-Powered by [Oxygenserv](https://www.oxygenserv.com/en/)
+skinchanger - Own your skin!
+
+Copyright (C) 2015-2023 Jérémie N'gadi
+
+This program Is free software: you can redistribute it And/Or modify it under the terms Of the GNU General Public License As published by the Free Software Foundation, either version 3 Of the License, Or (at your option) any later version.
+
+This program Is distributed In the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty Of MERCHANTABILITY Or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License For more details.
+
+You should have received a copy Of the GNU General Public License along with this program. If Not, see <http://www.gnu.org/licenses/>.
